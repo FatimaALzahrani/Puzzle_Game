@@ -1,4 +1,4 @@
-# gpa
+# Flutter Puzzel Game
 
 A new Flutter project.
 
