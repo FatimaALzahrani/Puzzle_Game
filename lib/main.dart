@@ -8,10 +8,6 @@ class PuzzleGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Puzzle Game',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
       home: PuzzleGamePage(),
     );
   }
@@ -23,12 +19,46 @@ class PuzzleGamePage extends StatefulWidget {
 }
 
 class PuzzleGamePageState extends State<PuzzleGamePage> {
-
+  List<int> puzzleList = List.generate(16, (index) => index + 1);
+  int emptyTileIndex = 15;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      body: GridView.builder(
+        padding: const EdgeInsets.all(16.0),
+        itemCount: puzzleList.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          crossAxisSpacing: 16.0,
+          mainAxisSpacing: 16.0,
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          if (index == emptyTileIndex) {
+            return Container();
+          } else {
+            return GestureDetector(
+              onTap: () {
+                //اذا كان يمكن التبديل بدل
+              },
+              child: Container(
+                color: Color.fromARGB(255, 52, 6, 52),
+                child: Center(
+                  child: Text(
+                    puzzleList[index].toString(),
+                    style: TextStyle(fontSize: 37.0, color: Colors.white),
+                  ),
+                ),
+              ),
+            );
+          }
+        },
+      ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 }
