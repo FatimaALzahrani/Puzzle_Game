@@ -17,7 +17,7 @@ https://user-images.githubusercontent.com/107775566/226172470-d0abfb59-f265-4672
       return false;
     }
     return (rowDiff == 0) || (colDiff == 0);
-   }
+    }
   
   ### swapTiles 
 2- تقوم دالة swapTiles بتبديل اماكن المربع المحدد والمربع الفاضي
@@ -27,7 +27,7 @@ https://user-images.githubusercontent.com/107775566/226172470-d0abfb59-f265-4672
     puzzleList[tileIndex] = puzzleList[emptyTileIndex];
     puzzleList[emptyTileIndex] = temp;
     emptyTileIndex = tileIndex;
-   }
+    }
   
   ### shufflePuzzle
 3- تقوم دالة shufflePuzzle بترتيب عشوائي لللارقام
@@ -43,4 +43,4 @@ https://user-images.githubusercontent.com/107775566/226172470-d0abfb59-f265-4672
       int randomIndex = movableTiles[Random().nextInt(movableTiles.length)];
       swapTiles(randomIndex);
     }
-   }
+    }
