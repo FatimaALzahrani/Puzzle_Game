@@ -39,7 +39,11 @@ class PuzzleGamePageState extends State<PuzzleGamePage> {
           } else {
             return GestureDetector(
               onTap: () {
-                //اذا كان يمكن التبديل بدل
+                if (canMoveTile(index)) {
+                  setState(() {
+                    //لو يقبل التبديل بدل
+                  });
+                }
               },
               child: Container(
                 color: Color.fromARGB(255, 52, 6, 52),
@@ -56,6 +60,16 @@ class PuzzleGamePageState extends State<PuzzleGamePage> {
       ),
     );
   }
+
+  bool canMoveTile(int tileIndex) {
+    int rowDiff = (tileIndex / 4).toInt() - (emptyTileIndex / 4).toInt();
+    int colDiff = (tileIndex % 4) - (emptyTileIndex % 4);
+    if (rowDiff.abs() > 1 || colDiff.abs() > 1) {
+      return false;
+    }
+    return (rowDiff == 0) || (colDiff == 0);
+  }
+
 
   @override
   void initState() {
