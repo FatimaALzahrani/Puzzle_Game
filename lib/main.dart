@@ -41,7 +41,7 @@ class PuzzleGamePageState extends State<PuzzleGamePage> {
               onTap: () {
                 if (canMoveTile(index)) {
                   setState(() {
-                    //لو يقبل التبديل بدل
+                    swapTiles(index);
                   });
                 }
               },
@@ -68,6 +68,13 @@ class PuzzleGamePageState extends State<PuzzleGamePage> {
       return false;
     }
     return (rowDiff == 0) || (colDiff == 0);
+  }
+
+  void swapTiles(int tileIndex) {
+    int temp = puzzleList[tileIndex];
+    puzzleList[tileIndex] = puzzleList[emptyTileIndex];
+    puzzleList[emptyTileIndex] = temp;
+    emptyTileIndex = tileIndex;
   }
 
 
